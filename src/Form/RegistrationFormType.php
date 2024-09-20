@@ -34,10 +34,16 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mot de passes doivent correspondre.',
-                'options' => ['attr' => ['class' => 'password-field']],
+                'options' => ['attr' => ['class' => 'form-control']],
                 'required' => true,
-                'first_options'  => ['label' => 'Password'],
-                'second_options' => ['label' => 'Repeat Password'],
+                'first_options'  => [
+                    'label' => 'Password',
+                    'label_attr' => ['class' => 'form-label'],
+                ],
+                'second_options' => [
+                    'label' => 'Repeat Password',
+                    'label_attr' => ['class' => 'form-label'],
+                ],
             ])
         ;
     }

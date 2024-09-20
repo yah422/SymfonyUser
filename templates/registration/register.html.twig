@@ -1,24 +1,46 @@
 {% extends 'base.html.twig' %}
-
+ 
 {% block title %}Register{% endblock %}
-
+ 
 {% block body %}
     {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+        <div class="alert alert-danger" role="alert">
+            {{ flash_error }}
+        </div>
     {% endfor %}
-
-    <h1>Register</h1>
-
+ 
+    <h1 class="display-4 mt-5">S'inscrire</h1>
+ 
     {{ form_errors(registrationForm) }}
-
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.pseudo) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+ 
+    <div class="container">
+        {{ form_start(registrationForm) }}
+    
+            {{ form_row(registrationForm.email, {
+                'attr': {'class': 'form-control'},
+                'label_attr': {'class': 'form-label'}
+            }) }}
+    
+            {{ form_row(registrationForm.pseudo, {
+                'attr': {'class': 'form-control'},
+                'label_attr': {'class': 'form-label'}
+            }) }}
+    
+            {{ form_row(registrationForm.plainPassword, {
+                'label': 'Password' ,
+                'attr': {'class': 'form-control'},
+                'label_attr': {'class': 'form-label'}
+            }) }}
+    
+            <div class="form-check mt-3">
+                {{ form_row(registrationForm.agreeTerms, {
+                    'attr': {'class': 'form-check-input'},
+                    'label_attr': {'class': 'form-check-label'}
+                }) }}
+            </div>
+    
+            <button type="submit" class="btn btn-primary mt-3">S'inscrire</button>
+    
+        {{ form_end(registrationForm) }}
+    </div>
 {% endblock %}
